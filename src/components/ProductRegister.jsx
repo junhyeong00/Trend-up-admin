@@ -13,6 +13,12 @@ import OptionRegister from './OptionRegister';
 
 import Error from './ui/Error';
 
+const Container = styled.div`
+  div {
+    margin-block: 1em;
+  }
+`;
+
 const PhotoUpload = styled.div`
   display: flex;
   flex-direction: column;
@@ -78,7 +84,7 @@ export default function ProudctRegister({ navigate }) {
   };
 
   return (
-    <div>
+    <Container>
       <h2>상품 등록</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h3>상품 정보 입력</h3>
@@ -153,6 +159,6 @@ export default function ProudctRegister({ navigate }) {
         <button type="submit">등록</button>
         <Error>{errorMessage}</Error>
       </form>
-    </div>
+    </Container>
   );
 }
