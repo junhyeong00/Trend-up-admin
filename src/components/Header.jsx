@@ -43,9 +43,11 @@ export default function Header() {
       <Menu>
         <ul>
           <li>
-            <Link to="/product">상품 관리</Link>
+            <Link to="/products">상품 관리</Link>
           </li>
-          <li>주문 관리</li>
+          <li>
+            <Link to="/orders">주문 관리</Link>
+          </li>
           <li>회원 관리</li>
           <li>대시보드</li>
         </ul>

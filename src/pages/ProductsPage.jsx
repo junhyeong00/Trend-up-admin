@@ -13,9 +13,18 @@ const Container = styled.div`
 export default function ProudctsPage() {
   const navigate = useNavigate();
 
+  const title = '상품 관리';
+  const menus = [
+    { id: 1, title: '상품 등록', to: '/product/register' },
+    { id: 2, title: '상품 목록', to: '/products' },
+  ];
+
   return (
     <Container>
-      <SideNavigationBar />
+      <SideNavigationBar
+        title={title}
+        menus={menus}
+      />
       <Proudcts
         navigate={navigate}
       />

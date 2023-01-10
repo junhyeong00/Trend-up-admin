@@ -67,6 +67,20 @@ export default class ApiService {
       totalPageCount: data.totalPageCount,
     };
   }
+
+  async fetchOrders(page, size) {
+    const url = `${baseUrl}/admin-orders`;
+    const { data } = await axios.get(
+      url,
+      {
+        params: { page, size },
+      },
+    );
+    return {
+      orders: data.orders,
+      totalPageCount: data.totalPageCount,
+    };
+  }
 }
 
 export const apiService = new ApiService();
