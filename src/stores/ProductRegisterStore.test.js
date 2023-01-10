@@ -77,7 +77,7 @@ describe('ProductRegisterStore', () => {
         optionName: '기본', optionPrice: 0,
       });
 
-      expect(productRegisterStore.options.options).toHaveLength(1);
+      expect(productRegisterStore.options).toHaveLength(1);
     });
   });
 
@@ -87,11 +87,11 @@ describe('ProductRegisterStore', () => {
         optionName: '기본', optionPrice: 0,
       });
 
-      expect(productRegisterStore.options.options).toHaveLength(1);
+      expect(productRegisterStore.options).toHaveLength(1);
 
       productRegisterStore.deleteOption({ id: 1 });
 
-      expect(productRegisterStore.options.options).toHaveLength(0);
+      expect(productRegisterStore.options).toHaveLength(0);
     });
   });
 });
