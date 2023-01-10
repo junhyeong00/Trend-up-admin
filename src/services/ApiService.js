@@ -81,6 +81,14 @@ export default class ApiService {
       totalPageCount: data.totalPageCount,
     };
   }
+
+  async changeDeliveryStatus(orderId, deliveryStatus) {
+    const url = `${baseUrl}/admin-orders/${orderId}`;
+    await axios.patch(
+      url,
+      { deliveryStatus },
+    );
+  }
 }
 
 export const apiService = new ApiService();
