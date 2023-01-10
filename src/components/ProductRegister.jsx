@@ -78,8 +78,7 @@ export default function ProudctRegister({ navigate }) {
     });
 
     if (proudctId) {
-      navigate('/');
-      // TODO 이동할 페이지 필요
+      navigate('/products');
     }
   };
 

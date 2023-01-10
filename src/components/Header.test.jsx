@@ -31,6 +31,6 @@ describe('Header', () => {
     screen.getByText('상품 관리');
     screen.getByText('주문 관리');
     screen.getByText('회원 관리');
-    screen.getByText('통계');
+    screen.getByText('대시보드');
   });
 });
