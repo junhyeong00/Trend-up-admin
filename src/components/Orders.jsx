@@ -56,6 +56,10 @@ export default function Orders({ navigate }) {
     return ` 외 ${number - 1}건`;
   };
 
+  const handleChangeDeliveryStatus = (e, orderId) => {
+    ordersStore.changeDeliveryStatus(orderId, e.target.value);
+  };
+
   return (
     <Container>
       <div>
@@ -94,8 +98,13 @@ export default function Orders({ navigate }) {
                 </p>
               </div>
               <div>
-                <select>
-                  <option>{order.deliveryStatus}</option>
+                <select
+                  value={order.deliveryStatus}
+                  onChange={(e) => handleChangeDeliveryStatus(e, order.id)}
+                >
+                  <option value="배송 준비중">배송 준비중</option>
+                  <option value="배송중">배송중</option>
+                  <option value="배송완료">배송완료</option>
                 </select>
               </div>
             </li>

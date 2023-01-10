@@ -27,6 +27,21 @@ export default class OrdersStore extends Store {
     await this.fetchOrders(page - 1);
     this.publish();
   }
+
+  async changeDeliveryStatus(orderId, deliveryStatus) {
+    await apiService.changeDeliveryStatus(orderId, deliveryStatus);
+
+    const index = this.orders.findIndex((order) => order.id === orderId);
+    const order = this.orders[index];
+
+    this.orders = [
+      ...this.orders.slice(0, index),
+      { ...order, deliveryStatus },
+      ...this.orders.slice(index + 1),
+    ];
+
+    this.publish();
+  }
 }
 
 export const ordersStore = new OrdersStore();
