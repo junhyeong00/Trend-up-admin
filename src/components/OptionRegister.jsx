@@ -57,9 +57,9 @@ export default function OptionRegister() {
         추가
       </button>
       <Error>{optionErrorMessage}</Error>
-      {options.options.length ? (
+      {options.length ? (
         <ul>
-          {options.options.map((option) => (
+          {options.map((option) => (
             <li key={option.id}>
               <p>{option.optionName}</p>
               <p>

@@ -1,4 +1,4 @@
-import Options from '../models/Options';
+import Option from '../models/Option';
 import { apiService } from '../services/ApiService';
 
 import Store from './Store';
@@ -11,7 +11,7 @@ export default class ProductRegisterStore extends Store {
     this.imageUrl = '';
     this.errorMessage = '';
 
-    this.options = new Options([]);
+    this.options = [];
     this.optionName = '';
     this.optionPrice = '';
     this.optionErrorMessage = '';
@@ -22,7 +22,7 @@ export default class ProductRegisterStore extends Store {
     this.imageUrl = '';
     this.errorMessage = '';
 
-    this.options = new Options([]);
+    this.options = [];
     this.optionErrorMessage = '';
   }
 
@@ -34,7 +34,7 @@ export default class ProductRegisterStore extends Store {
       return '';
     }
 
-    if (!this.options.options.length) {
+    if (!this.options.length) {
       this.notAddOption();
       return '';
     }
@@ -63,13 +63,14 @@ export default class ProductRegisterStore extends Store {
   addOption({
     optionName, optionPrice,
   }) {
-    this.options = this.options.addOption({
-      optionName, optionPrice: Number(optionPrice),
+    const id = Math.max(0, ...this.options.map((i) => i.id)) + 1;
+    const option = new Option({
+      id,
+      optionName,
+      optionPrice: Number(optionPrice),
     });
 
-    this.optionErrorMessage = '';
-    this.optionName = '';
-    this.optionPrice = '';
+    this.options = [...this.options, option];
 
     this.publish();
   }
@@ -77,9 +78,16 @@ export default class ProductRegisterStore extends Store {
   deleteOption({
     id,
   }) {
-    this.options = this.options.deleteOption({
-      id,
-    });
+    const index = this.options.findIndex((i) => i.id === id);
+
+    this.options = [
+      ...this.options.slice(0, index),
+      ...this.options.slice(index + 1),
+    ];
+
+    this.optionErrorMessage = '';
+    this.optionName = '';
+    this.optionPrice = '';
 
     this.publish();
   }
