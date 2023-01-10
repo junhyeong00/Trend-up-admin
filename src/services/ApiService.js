@@ -89,6 +89,18 @@ export default class ApiService {
       { deliveryStatus },
     );
   }
+
+  async fetchInquiries(page) {
+    const url = `${baseUrl}/admin-inquiries`;
+    const { data } = await axios.get(url, {
+      params: { page },
+    });
+
+    return {
+      inquiries: data.inquiries,
+      totalPageCount: data.totalPageCount,
+    };
+  }
 }
 
 export const apiService = new ApiService();

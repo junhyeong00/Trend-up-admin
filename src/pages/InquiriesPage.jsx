@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+
 import styled from 'styled-components';
 
-import ProudctRegister from '../components/ProductRegister';
+import Inquiries from '../components/Inquiries';
+
 import SideNavigationBar from '../components/SideNavigationBar';
 
 const Container = styled.div`
@@ -10,7 +12,7 @@ const Container = styled.div`
   padding: 1em;
 `;
 
-export default function ProudctRegisterPage() {
+export default function InquiriesPage() {
   const navigate = useNavigate();
 
   const title = '상품 관리';
@@ -26,7 +28,7 @@ export default function ProudctRegisterPage() {
         title={title}
         menus={menus}
       />
-      <ProudctRegister
+      <Inquiries
         navigate={navigate}
       />
     </Container>
