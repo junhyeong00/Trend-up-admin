@@ -87,6 +87,30 @@ const server = setupServer(
 
     return res(ctx.status(400));
   }),
+
+  rest.get(`${baseUrl}/admin-orders`, async (req, res, ctx) => res(ctx.json({
+    orders: [
+      {
+        id: 1,
+        payment: 10000,
+        createAt: 2022 - 12 - 15,
+        orderProducts: [{ productId: 1, productName: '가디건' }],
+      },
+      {
+        id: 2,
+        payment: 20000,
+        createAt: 2022 - 12 - 16,
+        orderProducts: [{ productId: 2, productName: '귤' }],
+      },
+      {
+        id: 3,
+        payment: 30000,
+        createAt: 2022 - 12 - 19,
+        orderProducts: [{ productId: 3, productName: '사과' }],
+      },
+    ],
+    totalPageCount: 2,
+  }))),
 );
 
 export default server;

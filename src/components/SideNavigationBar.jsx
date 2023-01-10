@@ -21,22 +21,18 @@ const Navigation = styled.div`
   margin-top: .5em;
 `;
 
-export default function SideNavigationBar() {
+export default function SideNavigationBar({ title, menus }) {
   return (
     <Container>
       <Navigation>
         <Menu>
-          <h3>상품 관리</h3>
+          <h3>{title}</h3>
           <ul>
-            <li>
-              카테고리
-            </li>
-            <li>
-              <Link to="/product/register">상품 등록</Link>
-            </li>
-            <li>
-              <Link to="/products">상품 목록</Link>
-            </li>
+            {menus.map((menu) => (
+              <li key={menu.id}>
+                <Link to={menu.to}>{menu.title}</Link>
+              </li>
+            ))}
           </ul>
         </Menu>
       </Navigation>
