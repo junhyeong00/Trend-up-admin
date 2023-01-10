@@ -35,7 +35,7 @@ export default function SideNavigationBar() {
               <Link to="/product/register">상품 등록</Link>
             </li>
             <li>
-              상품 목록
+              <Link to="/products">상품 목록</Link>
             </li>
           </ul>
         </Menu>

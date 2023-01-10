@@ -47,7 +47,7 @@ export default function Header() {
           </li>
           <li>주문 관리</li>
           <li>회원 관리</li>
-          <li>통계</li>
+          <li>대시보드</li>
         </ul>
       </Menu>
     </Container>
