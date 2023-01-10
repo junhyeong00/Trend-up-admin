@@ -111,6 +111,19 @@ const server = setupServer(
     ],
     totalPageCount: 2,
   }))),
+
+  rest.get(`${baseUrl}/admin-inquiries`, async (req, res, ctx) => res(ctx.json({
+    inquiries: [
+      {
+        id: 1,
+        answerStatus: '미답변',
+        title: '재입고 문의',
+        content: '재입고 언제 되나요?',
+        isSecret: false,
+      },
+    ],
+    totalPageCount: 2,
+  }))),
 );
 
 export default server;

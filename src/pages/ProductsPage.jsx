@@ -17,6 +17,7 @@ export default function ProudctsPage() {
   const menus = [
     { id: 1, title: '상품 등록', to: '/product/register' },
     { id: 2, title: '상품 목록', to: '/products' },
+    { id: 3, title: '문의 관리', to: '/inquiries' },
   ];
 
   return (

@@ -72,44 +72,46 @@ export default function Orders({ navigate }) {
           <p>배송지 정보</p>
           <p>주문 상태</p>
         </Thead>
-        <List>
-          {orders.map((order) => (
-            <li key={order.id}>
-              <p>{order.id}</p>
-              <p>{order.createAt}</p>
-              <p>
-                {order.orderProducts[0].productName}
-                {orderCountFormat(order.orderProducts.length)}
-              </p>
-              <p>
-                {numberFormat(order.payment)}
-                원
-              </p>
-              <div>
-                <p>{order.receiver}</p>
+        {orders.length ? (
+          <List>
+            {orders.map((order) => (
+              <li key={order.id}>
+                <p>{order.id}</p>
+                <p>{order.createAt}</p>
                 <p>
-                  (
-                  {order.zipCode}
-                  )
-                  {' '}
-                  {order.roadAddress}
-                  {' '}
-                  {order.detailAddress}
+                  {order.orderProducts[0].productName}
+                  {orderCountFormat(order.orderProducts.length)}
                 </p>
-              </div>
-              <div>
-                <select
-                  value={order.deliveryStatus}
-                  onChange={(e) => handleChangeDeliveryStatus(e, order.id)}
-                >
-                  <option value="배송 준비중">배송 준비중</option>
-                  <option value="배송중">배송중</option>
-                  <option value="배송완료">배송완료</option>
-                </select>
-              </div>
-            </li>
-          ))}
-        </List>
+                <p>
+                  {numberFormat(order.payment)}
+                  원
+                </p>
+                <div>
+                  <p>{order.receiver}</p>
+                  <p>
+                    (
+                    {order.zipCode}
+                    )
+                    {' '}
+                    {order.roadAddress}
+                    {' '}
+                    {order.detailAddress}
+                  </p>
+                </div>
+                <div>
+                  <select
+                    value={order.deliveryStatus}
+                    onChange={(e) => handleChangeDeliveryStatus(e, order.id)}
+                  >
+                    <option value="배송 준비중">배송 준비중</option>
+                    <option value="배송중">배송중</option>
+                    <option value="배송완료">배송완료</option>
+                  </select>
+                </div>
+              </li>
+            ))}
+          </List>
+        ) : <p>주문내역이 없습니다</p>}
       </div>
       <PageNumbers
         totalPageCount={totalPageCount}
