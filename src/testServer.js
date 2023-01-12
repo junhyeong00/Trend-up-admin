@@ -124,6 +124,12 @@ const server = setupServer(
     ],
     totalPageCount: 2,
   }))),
+
+  rest.post(`${baseUrl}/answer`, async (req, res, ctx) => res(
+    ctx.json({
+      answerId: 1,
+    }),
+  )),
 );
 
 export default server;

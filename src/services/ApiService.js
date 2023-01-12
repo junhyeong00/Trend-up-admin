@@ -101,6 +101,16 @@ export default class ApiService {
       totalPageCount: data.totalPageCount,
     };
   }
+
+  async writeAnswer({ inquiryId, comment }) {
+    const url = `${baseUrl}/answer`;
+    const { data } = await axios.post(url, {
+      inquiryId,
+      comment,
+    });
+
+    return data;
+  }
 }
 
 export const apiService = new ApiService();

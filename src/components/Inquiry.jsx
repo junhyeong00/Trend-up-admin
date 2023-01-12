@@ -18,21 +18,17 @@ const Tbody = styled.li`
   }
 `;
 
-export default function Inquiry({ inquiry }) {
-  const handleClick = () => {
-
-  };
-
+export default function Inquiry({ inquiry, handleClickInquriy }) {
   return (
     <div>
-      <Tbody type="button" onClick={handleClick}>
+      <Tbody type="button" onClick={() => handleClickInquriy(inquiry)}>
         <p>{inquiry.productName}</p>
         <p>
           {inquiry.title}
         </p>
         <p>{inquiry.userName}</p>
         <p>{inquiry.createAt}</p>
-        <p>{inquiry.answerStatus}</p>
+        <p>{inquiry.answerStatus ? '답변완료' : '미답변'}</p>
       </Tbody>
     </div>
   );

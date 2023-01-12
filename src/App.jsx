@@ -5,9 +5,10 @@ import Header from './components/Header';
 import ProudctsPage from './pages/ProductsPage';
 import ProudctRegisterPage from './pages/ProductRegisterPage';
 import OrdersPage from './pages/OrdersPage';
+import InquiriesPage from './pages/InquiriesPage';
+import AnswerWritePage from './pages/AnswerWritePage';
 
 import GlobalStyle from './styles/GlobalStyle';
-import InquiriesPage from './pages/InquiriesPage';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/product/register" element={<ProudctRegisterPage />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/inquiries" element={<InquiriesPage />} />
+        <Route path="/answer/write" element={<AnswerWritePage />} />
       </Routes>
     </div>
   );

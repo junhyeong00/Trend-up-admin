@@ -5,5 +5,9 @@ module.exports = function () {
     setupProducts() {
       this.amOnPage(`${backdoorBaseUrl}/setup-products`);
     },
+
+    setupInquiries() {
+      this.amOnPage(`${backdoorBaseUrl}/setup-inquiries`);
+    },
   });
 };
