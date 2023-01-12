@@ -17,7 +17,7 @@ const PageNumber = styled.button`
 `;
 
 export default function PageNumbers({
-  totalPageCount, handlePageClick,
+  totalPageCount, handleClickPage,
 }) {
   const pages = Array(totalPageCount).fill(0)
     .map((element, index) => index + 1);
@@ -28,7 +28,7 @@ export default function PageNumbers({
         <li key={page}>
           <PageNumber
             type="button"
-            onClick={() => handlePageClick(page)}
+            onClick={() => handleClickPage(page)}
           >
             {page}
           </PageNumber>

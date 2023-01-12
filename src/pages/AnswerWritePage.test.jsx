@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import ProductRegisterPage from './ProductRegisterPage';
+import AnswerWritePage from './AnswerWritePage';
 
 const navigate = jest.fn();
 
@@ -16,12 +16,19 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => (
     navigate
   ),
+  useLocation: () => ({
+    state: {
+      inquiry: [{
+        id: 1, title: '재입고 문의', content: '재입고 언제되나요?',
+      }],
+    },
+  }),
 }));
 
-describe('ProductRegisterPage', () => {
+describe('AnswerWritePage', () => {
   it('renders screen', () => {
-    render(<ProductRegisterPage />);
+    render(<AnswerWritePage />);
 
-    screen.getAllByText('상품 등록');
+    screen.getAllByText('답변 작성');
   });
 });

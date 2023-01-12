@@ -39,7 +39,7 @@ const Thead = styled.summary`
   }
 `;
 
-export default function Inquiries() {
+export default function Inquiries({ navigate }) {
   const inquiriesStore = useInquiriesStore();
 
   const {
@@ -52,8 +52,15 @@ export default function Inquiries() {
     inquiriesStore.fetchInquiries(currentPage);
   }, []);
 
-  const handlePageClick = (page) => {
+  const handleClickPage = (page) => {
     inquiriesStore.changePage(page);
+  };
+
+  const handleClickInquriy = (inquiry) => {
+    navigate(
+      '/answer/write',
+      { state: inquiry },
+    );
   };
 
   return (
@@ -74,13 +81,14 @@ export default function Inquiries() {
             <Inquiry
               key={inquiry.id}
               inquiry={inquiry}
+              handleClickInquriy={handleClickInquriy}
             />
           ))}
         </List>
       ) : <p>작성된 문의가 없습니다</p>}
       <PageNumbers
         totalPageCount={totalPageCount}
-        handlePageClick={handlePageClick}
+        handleClickPage={handleClickPage}
       />
     </Container>
   );
