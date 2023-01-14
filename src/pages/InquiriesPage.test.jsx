@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 
 import InquiriesPage from './ProductRegisterPage';
 
@@ -19,6 +19,10 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('InquiriesPage', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('renders screen', () => {
     render(<InquiriesPage />);
 

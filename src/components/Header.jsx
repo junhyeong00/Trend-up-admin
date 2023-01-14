@@ -49,7 +49,9 @@ export default function Header() {
             <Link to="/orders">주문 관리</Link>
           </li>
           <li>회원 관리</li>
-          <li>대시보드</li>
+          <li>
+            <Link to="/dashboard">대시보드</Link>
+          </li>
         </ul>
       </Menu>
     </Container>

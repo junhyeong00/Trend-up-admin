@@ -49,6 +49,7 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "@nivo/line": "^0.80.0",
     "axios": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
