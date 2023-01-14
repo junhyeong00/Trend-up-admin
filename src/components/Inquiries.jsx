@@ -20,10 +20,6 @@ const List = styled.ul`
   button {
     padding: 1em;
   }
-
-  p {
-    padding-right: 1em;
-  }
 `;
 
 const Thead = styled.summary`

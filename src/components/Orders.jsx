@@ -44,7 +44,7 @@ export default function Orders({ navigate }) {
     ordersStore.fetchOrders(currentPage);
   }, []);
 
-  const handlePageClick = (page) => {
+  const handleClickPage = (page) => {
     ordersStore.changePage(page);
   };
 
@@ -115,7 +115,7 @@ export default function Orders({ navigate }) {
       </div>
       <PageNumbers
         totalPageCount={totalPageCount}
-        handlePageClick={handlePageClick}
+        handleClickPage={handleClickPage}
       />
     </Container>
   );

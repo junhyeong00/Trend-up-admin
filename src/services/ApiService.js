@@ -111,6 +111,22 @@ export default class ApiService {
 
     return data;
   }
+
+  async fetchSalesData() {
+    const url = `${baseUrl}/admin-orders/sales`;
+    const { data } = await axios.get(url);
+
+    const { salesData, totalSales, monthlySales } = data;
+
+    return { salesData, totalSales, monthlySales };
+  }
+
+  async fetchDeliveryInformation() {
+    const url = `${baseUrl}/admin-orders/delivery`;
+    const { data } = await axios.get(url);
+    const { shippedCount, inTransitCount, deliveredCount } = data;
+    return { shippedCount, inTransitCount, deliveredCount };
+  }
 }
 
 export const apiService = new ApiService();

@@ -27,12 +27,12 @@ const Thead = styled.div`
   padding-block: .6em;
 `;
 
-const Product = styled.li`
-  button {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
-    align-items: center;
-  }
+const Product = styled.button`
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  font-size: .9em;
 `;
 
 export default function Products({ navigate }) {
@@ -70,8 +70,8 @@ export default function Products({ navigate }) {
       </Thead>
       <div>
         {products.map((product) => (
-          <Product key={product.id}>
-            <button
+          <li key={product.id}>
+            <Product
               type="button"
               // onClick={() => handleProductClick(product.id)}
             >
@@ -86,8 +86,8 @@ export default function Products({ navigate }) {
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
               </div>
-            </button>
-          </Product>
+            </Product>
+          </li>
         ))}
       </div>
       <PageNumbers
