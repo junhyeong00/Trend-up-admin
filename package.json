@@ -11,6 +11,7 @@
     "codeceptjs:ui": "codecept-ui --app",
     "heroku-postbuild": "npm run build"
   },
+  "alias": {     "process": false   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/junhyeong00/Trend-up-admin.git"
