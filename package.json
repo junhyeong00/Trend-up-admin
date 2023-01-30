@@ -2,6 +2,7 @@
   "name": "trend-up-admin",
   "version": "1.0.0",
   "description": "shopping-mall-admin",
+  "main": "index.js",
   "scripts": {
     "start": "parcel index.html --port 8081",
     "test": "jest --watchAll",
