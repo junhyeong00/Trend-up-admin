@@ -8,13 +8,15 @@ import useInquiriesStore from '../hooks/useInquiriesStore';
 import Inquiry from './Inquiry';
 
 const Container = styled.div`
+  min-width: 1024px;
   padding: 1em;
+  padding-right: 2em;
 `;
 
 const List = styled.ul`
   li {
     padding: 1em;
-    border: 1px solid black;
+    border-bottom: 1px solid #D9D9D9;
   }
 
   button {
@@ -26,13 +28,20 @@ const Thead = styled.summary`
   display: grid;
   width: 100%;
   margin-top: 1em;
+  border-top: 2px solid #000000;
+  border-bottom: 1px solid #D9D9D9;
   padding: 1em;
   grid-template-columns: 1.5fr 5fr 1.3fr 1fr 1fr;
 
   p {
     text-align: center;
     vertical-align: middle;
+    font-weight: 700;
   }
+`;
+
+const Empty = styled.p`
+  padding-top: 1em;
 `;
 
 export default function Inquiries({ navigate }) {
@@ -61,7 +70,7 @@ export default function Inquiries({ navigate }) {
 
   return (
     <Container>
-      <h3>상품 문의</h3>
+      <h2>상품 문의</h2>
       <div>
         <Thead>
           <p>상품명</p>
@@ -81,7 +90,7 @@ export default function Inquiries({ navigate }) {
             />
           ))}
         </List>
-      ) : <p>작성된 문의가 없습니다</p>}
+      ) : <Empty>작성된 문의가 없습니다</Empty>}
       <PageNumbers
         totalPageCount={totalPageCount}
         handleClickPage={handleClickPage}

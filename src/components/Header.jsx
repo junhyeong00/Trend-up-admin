@@ -1,7 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.nav`
+  min-width: 1024px;
   display: flex;
   width: 100%;
   padding: 1em 1.5em;
@@ -26,14 +27,21 @@ const Menu = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  font-weight: 500;
+`;
 
-  button {
-    padding: .6em .8em;
+const Button = styled.li`
+    a {
+    color: ${({ isActive }) => (isActive ? '#303030' : '#808080')};
   }
 `;
 
 export default function Header() {
-  const navigate = useNavigate();
+  const location = useLocation();
+
+  function isActive(url) {
+    return location.pathname.startsWith(url);
+  }
 
   return (
     <Container>
@@ -42,16 +50,30 @@ export default function Header() {
       </H1>
       <Menu>
         <ul>
-          <li>
-            <Link to="/products">상품 관리</Link>
-          </li>
-          <li>
+          <Button
+            isActive={isActive('/product') || isActive('/inquiries')}
+          >
+            <Link
+              to="/products"
+            >
+              상품 관리
+            </Link>
+          </Button>
+          <Button
+            isActive={isActive('/orders')}
+          >
             <Link to="/orders">주문 관리</Link>
-          </li>
-          <li>회원 관리</li>
-          <li>
+          </Button>
+          <Button
+            isActive={isActive('/users')}
+          >
+            <Link to="/users">회원 관리</Link>
+          </Button>
+          <Button
+            isActive={isActive('/dashboard')}
+          >
             <Link to="/dashboard">대시보드</Link>
-          </li>
+          </Button>
         </ul>
       </Menu>
     </Container>

@@ -6,9 +6,11 @@ import numberFormat from '../utils/NumberFormat';
 import Graph from './Graph';
 
 const Container = styled.div`
-  width: 90%;
+  min-width: 1024px;
+  width: 100%;
   margin: 0 auto;
   padding: 1em;
+  padding-right: 2em;
 `;
 
 const Title = styled.h2`
@@ -69,6 +71,10 @@ export default function Dashboard() {
     dashboardStore.fetchSalesData();
     dashboardStore.fetchDeliveryInformation();
   }, []);
+
+  if (!totalSales) {
+    return (<p>로딩중</p>);
+  }
 
   return (
     <Container>

@@ -10,7 +10,13 @@ import numberFormat from '../utils/NumberFormat';
 import PageNumbers from './PageNumbers';
 
 const Container = styled.div`
+  min-width: 1024px;
   padding: 1em;
+  margin-right: 1em;
+
+  h2 {
+    margin-bottom: 1em;
+  }
 `;
 
 const List = styled.ul`
@@ -19,7 +25,7 @@ const List = styled.ul`
     grid-template-columns: 1fr .8fr 1.5fr 1fr 1.2fr .8fr;
     margin-block: .5em;
     padding: 1em;
-    border: 1px solid black;
+    border-bottom: 1px solid #D9D9D9;
     align-items: center;
     text-align: center;
   }
@@ -30,7 +36,10 @@ const Thead = styled.div`
   grid-template-columns: 1fr .8fr 1.5fr 1fr 1.2fr .8fr;
   align-items: center;
   text-align: center;
-  padding-block: .5em;
+  border-top: 2px solid #000000;
+  border-bottom: 1px solid #D9D9D9;
+  padding: 1em;
+  font-weight: 700;
 `;
 
 export default function Orders({ navigate }) {
@@ -63,7 +72,7 @@ export default function Orders({ navigate }) {
   return (
     <Container>
       <div>
-        <h3>주문 목록</h3>
+        <h2>주문 목록</h2>
         <Thead>
           <p>주문번호</p>
           <p>주문일</p>

@@ -7,6 +7,16 @@ import useProductRegisterStore from '../hooks/useProductRegisterStore';
 import numberFormat from '../utils/NumberFormat';
 
 import Error from './ui/Error';
+import Input from './ui/Input';
+import SecondaryButton from './ui/SecondaryButton';
+
+const Container = styled.div`
+  min-width: 1024px;
+
+   h3 {
+    margin-bottom: .7em;
+  }
+`;
 
 const Register = styled.div`
   display: flex;
@@ -14,14 +24,18 @@ const Register = styled.div`
   gap: 2em;
 
   button {
-    width: 5em;
-    height: 2em;
+    padding: .5em 1em;
   }
 `;
 
 const Option = styled.li`
   display: flex;
+  align-items: center;
   gap: 2em;
+
+  button {
+    padding: .5em 1em;
+  }
 `;
 
 export default function OptionRegister() {
@@ -45,12 +59,12 @@ export default function OptionRegister() {
   };
 
   return (
-    <div>
+    <Container>
       <h3>옵션 등록</h3>
       <Register>
         <div>
           <label htmlFor="input-optionName">옵션명</label>
-          <input
+          <Input
             id="input-optionName"
             type="text"
             value={optionName}
@@ -59,7 +73,7 @@ export default function OptionRegister() {
         </div>
         <div>
           <label htmlFor="input-optionPrice">추가 금액</label>
-          <input
+          <Input
             id="input-optionPrice"
             type="number"
             value={optionPrice}
@@ -67,12 +81,12 @@ export default function OptionRegister() {
           />
           <span>원</span>
         </div>
-        <button
+        <SecondaryButton
           type="button"
           onClick={addOption}
         >
           추가
-        </button>
+        </SecondaryButton>
         <Error>{optionErrorMessage}</Error>
       </Register>
       {options.length ? (
@@ -84,16 +98,16 @@ export default function OptionRegister() {
                 {numberFormat(option.optionPrice)}
                 원
               </p>
-              <button
+              <SecondaryButton
                 type="button"
                 onClick={() => handleClickDeleteOption(option.id)}
               >
                 삭제
-              </button>
+              </SecondaryButton>
             </Option>
           ))}
         </ul>
       ) : null}
-    </div>
+    </Container>
   );
 }

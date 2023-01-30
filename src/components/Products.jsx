@@ -1,15 +1,21 @@
 import { useEffect } from 'react';
 
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import numberFormat from '../utils/NumberFormat';
 
 import PageNumbers from './PageNumbers';
 
 import useProductsStore from '../hooks/useProductsStore';
+import SecondaryButton from './ui/SecondaryButton';
 
 const Container = styled.div`
+  min-width: 1024px;
   padding: 1em;
+  margin-right: 1em;
+
+  h2 {
+    margin-bottom: 1em;
+  }
 
   img {
     width: 10em;
@@ -24,7 +30,10 @@ const Thead = styled.div`
   grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
   align-items: center;
   text-align: center;
-  padding-block: .6em;
+  border-top: 2px solid #000000;
+  border-bottom: 1px solid #D9D9D9;
+  padding-block: 1em;
+  font-weight: 700;
 `;
 
 const Product = styled.button`
@@ -33,6 +42,9 @@ const Product = styled.button`
   align-items: center;
   width: 100%;
   font-size: .9em;
+  border: 0;
+  border-bottom: 1px solid #D9D9D9;
+  background: none;
 `;
 
 export default function Products({ navigate }) {
@@ -46,13 +58,13 @@ export default function Products({ navigate }) {
     productsStore.fetchProducts(currentPage);
   }, []);
 
-  const handlePageClick = (page) => {
+  const handleClickPage = (page) => {
     productsStore.changePage(page);
   };
 
-  // const handleProductClick = (productId) => {
-  //   navigate(`/products/${productId}`);
-  // };
+  const handleClickProduct = (productId) => {
+    window.location.href = `http://localhost:8080/products/${productId}`;
+  };
 
   if (!products.length) {
     return (<p>상품이 존재하지 않습니다</p>);
@@ -73,7 +85,7 @@ export default function Products({ navigate }) {
           <li key={product.id}>
             <Product
               type="button"
-              // onClick={() => handleProductClick(product.id)}
+              onClick={() => handleClickProduct(product.id)}
             >
               <img src={product.image} alt={product.name} />
               <p>{product.name}</p>
@@ -83,8 +95,8 @@ export default function Products({ navigate }) {
               </p>
               <p>{product.createAt}</p>
               <div>
-                <button type="button">수정</button>
-                <button type="button">삭제</button>
+                <SecondaryButton type="button">수정</SecondaryButton>
+                <SecondaryButton type="button">삭제</SecondaryButton>
               </div>
             </Product>
           </li>
@@ -92,7 +104,7 @@ export default function Products({ navigate }) {
       </div>
       <PageNumbers
         totalPageCount={totalPageCount}
-        handlePageClick={handlePageClick}
+        handleClickPage={handleClickPage}
       />
     </Container>
   );
