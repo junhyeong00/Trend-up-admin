@@ -43,7 +43,7 @@ export default class ApiService {
     options,
     imageUrl,
   }) {
-    const url = `${baseUrl}/product`;
+    const url = `${baseUrl}/admin/product`;
     const { data } = await axios.post(url, {
       productName,
       price,

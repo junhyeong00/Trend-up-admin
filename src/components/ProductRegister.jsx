@@ -12,10 +12,31 @@ import useProductRegisterStore from '../hooks/useProductRegisterStore';
 import OptionRegister from './OptionRegister';
 
 import Error from './ui/Error';
+import Input from './ui/Input';
+import PrimaryButton from './ui/PrimaryButton';
+import SecondaryButton from './ui/SecondaryButton';
 
 const Container = styled.div`
-  div {
+  padding: 1em;
+  min-width: 1024px;
+  margin-right: 1em;
+
+  h2 {
+    margin-bottom: 1em;
+  }
+  
+  form > div {
     margin-block: 1em;
+  }
+
+  select {
+    margin-left: 1em;
+    border-color: #CCCCCC;
+    padding: .5em 1em;
+  }
+
+  input {
+    margin-inline: 1em .2em;
   }
 `;
 
@@ -24,10 +45,11 @@ const PhotoUpload = styled.div`
   flex-direction: column;
   justify-content: center;
   /* align-items: center; */
+  gap:.5em;
   height: 15em;
 
   input {
-    /* display: none; */
+    display: none;
   }
 
   button {
@@ -35,6 +57,19 @@ const PhotoUpload = styled.div`
     width: 100px;
     height: 30px;
     border-radius: 10px;
+  }
+
+  label {
+    width: 150px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -46,6 +81,21 @@ const Box = styled.img`
   /* padding: 10px; */
 `;
 
+const RegisterButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: 12em;
+  }
+
+  p {
+    margin-top: .4em;
+  }
+`;
+
 export default function ProudctRegister({ navigate }) {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -55,7 +105,7 @@ export default function ProudctRegister({ navigate }) {
   const { categories } = categoriesStore;
 
   const {
-    imageUrl, categoryId, errorMessage, options,
+    imageUrl, errorMessage,
   } = productRegisterStore;
 
   useEffect(() => {
@@ -109,8 +159,9 @@ export default function ProudctRegister({ navigate }) {
         </div>
         <div>
           <label htmlFor="input-productName">상품명</label>
-          <input
+          <Input
             id="input-productName"
+            error={errors.productName}
             {...register(
               'productName',
               { required: { value: true, message: '상품명을 입력해주세요' } },
@@ -120,9 +171,10 @@ export default function ProudctRegister({ navigate }) {
         </div>
         <div>
           <label htmlFor="input-price">판매가</label>
-          <input
+          <Input
             id="input-price"
             type="number"
+            error={errors.price}
             {...register(
               'price',
               { required: { value: true, message: '가격을 입력해주세요' } },
@@ -133,8 +185,9 @@ export default function ProudctRegister({ navigate }) {
         </div>
         <div>
           <label htmlFor="input-description">설명</label>
-          <input
+          <Input
             id="input-description"
+            error={errors.description}
             {...register(
               'description',
               { required: { value: true, message: '설명을 입력해주세요' } },
@@ -145,8 +198,8 @@ export default function ProudctRegister({ navigate }) {
         <OptionRegister />
         <div>
           <PhotoUpload>
-            <label htmlFor="input-image">이미지 추가</label>
             {imageUrl ? <Box url={imageUrl} /> : <p>사진을 업로드 해주세요</p>}
+            <label htmlFor="input-image">이미지 업로드</label>
             <input
               id="input-image"
               type="file"
@@ -155,8 +208,10 @@ export default function ProudctRegister({ navigate }) {
             />
           </PhotoUpload>
         </div>
-        <button type="submit">등록</button>
-        <Error>{errorMessage}</Error>
+        <RegisterButton>
+          <PrimaryButton type="submit">상품 등록</PrimaryButton>
+          <Error>{errorMessage}</Error>
+        </RegisterButton>
       </form>
     </Container>
   );

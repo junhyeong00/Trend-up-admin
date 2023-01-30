@@ -49,7 +49,7 @@ export default class ProductRegisterStore extends Store {
       price,
       description,
       categoryId: this.categoryId,
-      options: this.options.options,
+      options: this.options,
       imageUrl: this.imageUrl,
     });
 
@@ -71,6 +71,9 @@ export default class ProductRegisterStore extends Store {
     });
 
     this.options = [...this.options, option];
+
+    this.optionName = '';
+    this.optionPrice = '';
 
     this.publish();
   }
