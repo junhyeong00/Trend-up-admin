@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "shopping-mall-admin",
   "scripts": {
-    "start": "parcel index.html --port 8081",
+    "start": "parcel index.html",
     "test": "jest --watchAll",
     "build": "parcel build index.html --public-url /",
     "codeceptjs": "codeceptjs run --steps",
