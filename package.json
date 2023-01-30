@@ -1,7 +1,7 @@
 {
   "name": "trend-up-admin",
   "version": "1.0.0",
-  "description": "",
+  "description": "shopping-mall-admin",
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html --port 8081",
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/junhyeong00/Trend-up-admin.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Junhyeong Bae",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/junhyeong00/Trend-up-admin/issues"
