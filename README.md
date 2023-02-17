@@ -2,7 +2,7 @@
 
 <p align="center">
   <br>
-  <img width="1000"  alt="스크린샷 2023-02-09 오후 1 25 49" 
+  <img width="800" height="600 alt="스크린샷 2023-02-09 오후 1 25 49" 
     src="https://user-images.githubusercontent.com/107493122/219650106-bdd10c4a-3538-467d-9380-13d1108d00cf.png">
   <br>
 </p>
