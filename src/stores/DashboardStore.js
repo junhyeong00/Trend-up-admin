@@ -7,8 +7,8 @@ export default class DashboardStore extends Store {
     super();
 
     this.salesData = [];
-    this.totalSales = 0;
-    this.monthlySales = 0;
+    this.totalSales = -1;
+    this.monthlySales = -1;
 
     this.deliveryInformation = {};
   }

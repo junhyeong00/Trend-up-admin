@@ -36,9 +36,9 @@ export default function SideNavigationBar() {
 
   const { title, menus } = sideMenuStore;
 
-  useEffect(() => {
-    sideMenuStore.fetchMenu(location.pathname);
-  });
+  useEffect(async () => {
+    await sideMenuStore.fetchMenu(location.pathname);
+  }, []);
 
   return (
     <Container>

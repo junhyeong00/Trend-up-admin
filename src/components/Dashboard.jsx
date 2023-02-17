@@ -72,7 +72,7 @@ export default function Dashboard() {
     dashboardStore.fetchDeliveryInformation();
   }, []);
 
-  if (!totalSales) {
+  if (totalSales === -1) {
     return (<p>로딩중</p>);
   }
 
